@@ -1,3 +1,6 @@
+# increment-v1-basic-css.sh — loverk 20.05.2025
+
+mkdir -p app/styles && cat > app/styles/app.css <<'EOF'
 /* app/styles/app.css loverk 20.05.2025 */
 body {
   font-family: system-ui, sans-serif;
@@ -29,3 +32,8 @@ li {
 mark {
   background: yellow;
 }
+EOF
+
+git add .
+git commit -m "v1: 💄 Basic CSS enhancements"
+git push
