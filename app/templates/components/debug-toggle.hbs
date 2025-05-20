@@ -1,0 +1,9 @@
+{{! app/templates/components/debug-toggle.hbs loverk 20.05.2025 }}
+<div style="margin-bottom: 1rem;">
+  <label for="debug">🪵 Debug Mode:</label>
+  <select id="debug" {{on "change" this.toggle}}>
+    <option value="false">OFF</option>
+    <option value="true">ON</option>
+  </select>
+  <p><strong>{{this.statusText}}</strong></p>
+</div>
