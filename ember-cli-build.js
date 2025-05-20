@@ -3,6 +3,8 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
+  const path = require("path");
+  const fs = require("fs");
   const app = new EmberApp(defaults, {
     emberData: {
       deprecations: {
@@ -16,5 +18,6 @@ module.exports = function (defaults) {
     // Add options here
   });
 
+  app.import("app/styles/app.css");
   return app.toTree();
 };
