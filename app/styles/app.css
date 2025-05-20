@@ -1,0 +1,12 @@
+/* FILE: app/styles/app.css loverk 20.05.2025 */
+body {
+  font-family: sans-serif;
+  margin: 2rem;
+}
+input {
+  margin: 1rem 0;
+  padding: 0.5rem;
+}
+mark {
+  background: yellow;
+}

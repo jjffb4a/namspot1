@@ -1,0 +1,16 @@
+<!-- FILE: app/components/ui-box.hbs loverk 20.05.2025 -->
+<div class="box">
+  <label>Search:</label>
+  <input
+    type="text"
+    value={{this.query}}
+    placeholder="Try Alice, Bob, etc."
+    {{on "input" this.updateQuery}}
+  />
+
+  <ul>
+    {{#each this.highlightedNames as |item|}}
+      <li>{{{item.html}}}</li>
+    {{/each}}
+  </ul>
+</div>
