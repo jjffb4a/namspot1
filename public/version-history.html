@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Namspot1 Version History</title>
+  <style>
+    body { font-family: sans-serif; line-height: 1.5; padding: 2rem; background: #f9f9f9; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 2rem; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+    th { background: #eee; }
+    details { background: #fff; border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem; }
+    summary { font-weight: bold; cursor: pointer; }
+    pre { background: #f0f0f0; padding: 1rem; overflow: auto; }
+  </style>
+</head>
+<body>
+  <h1>📘 Namspot1 - Version History</h1>
+
+  <h2>Overview</h2>
+  <table>
+    <thead>
+      <tr><th>Version</th><th>Purpose</th><th>Link</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>v1</td><td>Initial Ember App with basic highlighting</td><td><a href="#v1">Go to</a></td></tr>
+      <tr><td>v2</td><td>CSS improvements and layout enhancements</td><td><a href="#v2">Go to</a></td></tr>
+      <tr><td>v3</td><td>Debug dropdown for interactive logs</td><td><a href="#v3">Go to</a></td></tr>
+      <tr><td>v4</td><td>Add Tailwind CSS v4</td><td><a href="#v4">Go to</a></td></tr>
+      <tr><td>v5</td><td>Mirage setup and mock scenarios</td><td><a href="#v5">Go to</a></td></tr>
+      <tr><td>v6</td><td>Convert to TypeScript</td><td><a href="#v6">Go to</a></td></tr>
+      <tr><td>v7</td><td>Transition to Polarion setup</td><td><a href="#v7">Go to</a></td></tr>
+      <tr><td>v8</td><td>Extended testing base with variants</td><td><a href="#v8">Go to</a></td></tr>
+      <tr><td>v9</td><td>Advanced acceptance and integration testing</td><td><a href="#v9">Go to</a></td></tr>
+      <tr><td>v10</td><td>Developer documentation improvements</td><td><a href="#v10">Go to</a></td></tr>
+      <tr><td>v11</td><td>Hook automation and error tracking</td><td><a href="#v11">Go to</a></td></tr>
+      <tr><td>v12</td><td>CI/CD integration</td><td><a href="#v12">Go to</a></td></tr>
+      <tr><td>v13</td><td>File watching for test-trigger + GH push</td><td><a href="#v13">Go to</a></td></tr>
+      <tr><td>v14</td><td>Auto commit/push on pass</td><td><a href="#v14">Go to</a></td></tr>
+      <tr><td>v15</td><td>Persistent browser test mode with enhancements</td><td><a href="#v15">Go to</a></td></tr>
+    </tbody>
+  </table>
+
+  <h2>Detailed Breakdown</h2>
+
+  <details id="v1"><summary>v1 - Initial Ember App with basic highlighting</summary>
+    <h3>Purpose</h3>
+    <p>Set up a minimal Ember.js app with Glimmer components and a simple input field that highlights matches in a fixed name list.</p>
+    <h3>Usage</h3>
+    <p>Run <code>pnpm install</code> and <code>pnpm exec ember serve</code>. The homepage shows a search box that highlights input matches in real-time.</p>
+    <h3>Dev Reasoning</h3>
+    <p>Used Ember Octane structure and plain CSS for maximum clarity. Avoided filtering logic for simplicity in this version.</p>
+  </details>
+
+  <details id="v2"><summary>v2 - CSS improvements and layout enhancements</summary>
+    <h3>Purpose</h3>
+    <p>Improve readability and visual appearance of the component, maintaining full HTML compatibility.</p>
+    <h3>Usage</h3>
+    <p>No additional setup required. Replaced old layout with flex/grid-based simple styling.</p>
+    <h3>Dev Reasoning</h3>
+    <p>Separate UI polish early to ensure visual clarity when additional logic is added in future versions.</p>
+  </details>
+
+  <details id="v3"><summary>v3 - Debug dropdown for interactive logs</summary>
+    <h3>Purpose</h3>
+    <p>Allow developers to toggle debug logging interactively via dropdown in the UI.</p>
+    <h3>Usage</h3>
+    <p>Dropdown appears on UI; select "Verbose" to log each component action and query update.</p>
+    <h3>Dev Reasoning</h3>
+    <p>Improves interactivity for debugging, especially useful with Mirage or async queries later.</p>
+  </details>
+
+  <details id="v4"><summary>v4 - Add Tailwind CSS v4</summary>
+    <h3>Purpose</h3>
+    <p>Transition styling to Tailwind 4.0 while maintaining the existing layout and component design.</p>
+    <h3>Usage</h3>
+    <p>Tailwind classes replace old classes. Tailwind config required manual setup due to absence of CLI in v4.</p>
+    <h3>Dev Reasoning</h3>
+    <p>Improves scalability and consistency in UI development. Setup follows Tailwind v4 constraints with Ember.</p>
+  </details>
+
+  <details id="v5"><summary>v5 - Mirage setup and mock scenarios</summary>
+    <h3>Purpose</h3>
+    <p>Add Mirage.js for mocking server responses, fallback to local data JSON.</p>
+    <h3>Usage</h3>
+    <p>Mirage intercepts <code>/api/names</code>. If fails, fetches <code>/names.json</code> from <code>/public</code>.</p>
+    <h3>Dev Reasoning</h3>
+    <p>Allows local dev and tests without needing backend.</p>
+  </details>
+
+  <details id="v6"><summary>v6 - Convert to TypeScript</summary>
+    <h3>Purpose</h3>
+    <p>Move all logic and components to TypeScript for improved type safety and future tooling support.</p>
+    <h3>Usage</h3>
+    <p>All .js files renamed to .ts. Types defined for args and components.</p>
+    <h3>Dev Reasoning</h3>
+    <p>Essential step for growth and better IDE support. Minimal tsconfig adjustments required.</p>
+  </details>
+
+  <details id="v7"><summary>v7 - Transition to Polarion setup</summary>
+    <h3>Purpose</h3>
+    <p>Prepare project for Polarion integration (naming, structure, flags).</p>
+    <h3>Usage</h3>
+    <p>Adjust namespace and path config; does not yet integrate Polarion runner directly.</p>
+    <h3>Dev Reasoning</h3>
+    <p>Needed to match enterprise CI pipelines later. Uses flags but still testable in Ember locally.</p>
+  </details>
+
+  <details id="v8"><summary>v8 - Extended testing base with variants</summary>
+    <h3>Purpose</h3>
+    <p>Introduce more atomic and variant-based testing files for ui-box.</p>
+    <h3>Usage</h3>
+    <p>Run <code>pnpm exec ember test</code>. Includes more <code>assert.dom(...)</code> coverage.</p>
+    <h3>Dev Reasoning</h3>
+    <p>Prepared for CI stability and snapshot options. Keeps each test isolated.</p>
+  </details>
+
+  <details id="v9"><summary>v9 - Advanced acceptance and integration testing</summary>
+    <h3>Purpose</h3>
+    <p>Combine integration, rendering, and keyboard-trigger tests for full flow coverage.</p>
+    <h3>Usage</h3>
+    <p>Uses fillIn + triggerKeyEvent to simulate user behavior end-to-end.</p>
+    <h3>Dev Reasoning</h3>
+    <p>Enables coverage of both highlighting and filtering and error fallback.</p>
+  </details>
+
+  <details id="v10"><summary>v10 - Developer documentation improvements</summary>
+    <h3>Purpose</h3>
+    <p>Introduced markdown docs in <code>docs/</code> explaining component intent, architecture and setup.</p>
+    <h3>Usage</h3>
+    <p>Markdown generated via patch script. Editable manually.</p>
+    <h3>Dev Reasoning</h3>
+    <p>Prepares for onboarding and team review. Structured by phase and history.</p>
+  </details>
+
+  <details id="v11"><summary>v11 - Hook automation and error tracking</summary>
+    <h3>Purpose</h3>
+    <p>Add hooks to log warnings or highlight edge-case events during component usage.</p>
+    <h3>Usage</h3>
+    <p>Console logs during mount/unmount. Included test logging support.</p>
+    <h3>Dev Reasoning</h3>
+    <p>For test resilience and dev troubleshooting.</p>
+  </details>
+
+  <details id="v12"><summary>v12 - CI/CD integration</summary>
+    <h3>Purpose</h3>
+    <p>Add GitHub Actions setup and optional local scripts for push with test confirmation.</p>
+    <h3>Usage</h3>
+    <p>Push triggers <code>ember test</code>. Errors block deploys.</p>
+    <h3>Dev Reasoning</h3>
+    <p>Minimize regression and team friction. Used GitHub CLI + workflows.</p>
+  </details>
+
+  <details id="v13"><summary>v13 - File watching for test-trigger + GH push</summary>
+    <h3>Purpose</h3>
+    <p>Enable local watch mode to push on save if tests pass.</p>
+    <h3>Usage</h3>
+    <p>Run script. Automatically watches <code>app/</code> and <code>tests/</code>.</p>
+    <h3>Dev Reasoning</h3>
+    <p>Saves keystrokes and time for iterative dev.</p>
+  </details>
+
+  <details id="v14"><summary>v14 - Auto commit/push on pass</summary>
+    <h3>Purpose</h3>
+    <p>Combine lint, test, and push for trusted automation.</p>
+    <h3>Usage</h3>
+    <p>When tests pass, auto commits with message and pushes to remote.</p>
+    <h3>Dev Reasoning</h3>
+    <p>Make testing + delivery atomic. Ideal for solo or spike workflows.</p>
+  </details>
+
+  <details id="v15"><summary>v15 - Persistent browser test mode with enhancements</summary>
+    <h3>Purpose</h3>
+    <p>Make browser-based test mode default, including DOM logging.</p>
+    <h3>Usage</h3>
+    <p>Run <code>pnpm exec ember test --server</code> and interact via browser.</p>
+    <h3>Dev Reasoning</h3>
+    <p>Helps validate markup and observe failure state visually.</p>
+  </details>
+</body>
+</html>
