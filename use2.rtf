@@ -1,5 +1,5 @@
 {\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;}
 {\colortbl;\red255\green255\blue255;}
 {\*\expandedcolortbl;;}
 \paperw11900\paperh16840\margl1440\margr1440\vieww14480\viewh14640\viewkind0
@@ -8,9 +8,13 @@
 \f0\fs24 \cf0 namspot1   with generator-scripts\
 V00\
 ember new namspot1 --lang en --skip-git --skip-npm --no-welcome && cd namspot1 && pnpm install\
-app/components/ui-box.js\
+app/components/
+\f1\b ui-box.js
+\f0\b0 \
 	@tracked query,   get highlightedNames(),   @action updateQuery(event)\
-app/components/ui-box.hbs\
+app/components/
+\f1\b ui-bo
+\f0\b0 x.hbs\
 	<input... \{\{this.query\}\}  \{\{on "input" this.updateQuery\}\}    \{\{#each this.highlightedNames\
 app/styles/app.css\
 	body, input, mark\
@@ -40,7 +44,9 @@ M ember-cli-build.js\
 postcss.config.js\
 	plugins: \{tailwindcss: \{\},autoprefixer: \{\},\},\
 M app/templates/application.hbs\
-M app/templates/components/ui-box.hbs\
+M app/templates/components/
+\f1\b ui-box
+\f0\b0 .hbs\
 docs/notes_v3.md\
 	install tailwind v4\
 V04\
@@ -51,17 +57,25 @@ app/initializers/ember-cli-mirage.js\
 	function initialize() ...  startMirage();\
 app/services/name-loader.js\
 	@tracked name   async load()   fetch('/api/names')...json   \
-M app/components/ui-box.js\
+M app/components/
+\f1\b ui-box
+\f0\b0 .js\
 	@service nameLoader   \
 tests/integration/components/ui-box-mirage-test.js\
 	Integration | Component | ui-box | Mirage   renders Mirage-loaded names\
  docs/notes_v4.md\
 	mirage on api \
 V05\
-mv app/components/ui-box.js app/components/ui-box.ts\
+mv app/components/
+\f1\b ui-box
+\f0\b0 .js app/components/
+\f1\b ui-box
+\f0\b0 .ts\
 mv app/services/name-loader.js app/services/name-loader.ts\
 mv app/initializers/ember-cli-mirage.js app/initializers/ember-cli-mirage.ts\
-app/components/ui-box.ts\
+app/components/
+\f1\b ui-box
+\f0\b0 .ts\
 	more complex\
 app/services/name-loader.ts\
 app/initializers/ember-cli-mirage.ts\
@@ -75,12 +89,14 @@ pnpm add -D @embroider/core @embroider/webpack @embroider/compat\
 	mkdir -p app/modules/core\
 	mkdir -p app/modules/features\
 	mkdir -p app/modules/features/ui-box\
-cp ...cp components/ui-box.ts modules/features/ui-box/component.ts  ..\
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-\cf0 ember-cli-build.js\
+cp ...cp components/
+\f1\b ui-box
+\f0\b0 .ts modules/features/
+\f1\b ui-box
+\f0\b0 /component.ts  ..\
+ember-cli-build.js\
 	const EmberApp = require('ember-cli/lib/broccoli/ember-app'); Webpack .. compatBuild   app = new EmberApp(..;return compatBuild(app, Webpack, \{staticAppPaths: [],skipBabel: [\{package: 'qunit',\},],\});\
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-\cf0 app/modules/features/ui-box/index.ts\
+app/modules/features/ui-box/index.ts\
 	export   ./component   template ./template.hbs\
 # 5. Update resolver (optional for advanced Polarion setups)\
 docs/notes_v6.md\
@@ -92,7 +108,9 @@ tailwind.config.js\
 	./app/**/*.hbs ...\
 app/styles/app.css\
 M ember-cli-build.js\
-M app/components/ui-box.hbs\
+M app/components/
+\f1\b ui-box
+\f0\b0 .hbs\
 pnpm add -D ember-cli-mirage   ???\
 mkdir -p mirage\
 mirage/config.js\
@@ -116,25 +134,31 @@ types/global.d.ts\
 	TemplateFactory from tmlbars-inline-precompile...\
 tsconfig.json\
 	typeRoots = ["types"]\
-mv app/components/ui-box.js app/components/ui-box.ts\
-app/components/ui-box.ts\
+mv app/components/
+\f1\b ui-box
+\f0\b0 .js app/components/
+\f1\b ui-box
+\f0\b0 .ts\
+app/components/
+\f1\b ui-box
+\f0\b0 .ts\
 	Name: id,text   Args: names query onSearch   @tracked query appliedQuery   get filteredNames()   @action updateQuery, applyQuery\
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-\cf0 ## v8: TypeScript Setup\
+## v8: TypeScript Setup\
 - Added tsconfig.json\
-- Converted ui-box.js -> ui-box.ts\
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-\cf0 V09   V9a V9b V9c old, broken\
+- Converted 
+\f1\b ui-box
+\f0\b0 .js -> 
+\f1\b ui-box
+\f0\b0 .ts\
+V09   V9a V9b V9c old, broken\
 pnpm install --save-dev ember-exam\
 OR\
 pnpm add -D ember-exam\
 grep package.json\
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-\cf0 ## v9: Visual Testing\
+## v9: Visual Testing\
 - ember-exam installed\
 - Added basic acceptance test\
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-\cf0 V10   # Convert Namspot1 to Polarion-like structure\
+V10   # Convert Namspot1 to Polarion-like structure\
 mkdir docs/polarion\
 mkdir -p tests/integration/components/ui-box\
 mv's ...\
