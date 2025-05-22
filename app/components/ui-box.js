@@ -1,7 +1,10 @@
 // FILE: app/components/ui-box.js loverk 20.05.2025
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { inject as service } from "@ember/service";
 import { action } from '@ember/object';
+
+@service nameLoader;
 
 export default class UiBoxComponent extends Component {
   @tracked query = '';

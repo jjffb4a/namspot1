@@ -1,0 +1,179 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww14480\viewh14640\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 namspot1   with generator-scripts\
+V00\
+ember new namspot1 --lang en --skip-git --skip-npm --no-welcome && cd namspot1 && pnpm install\
+app/components/ui-box.js\
+	@tracked query,   get highlightedNames(),   @action updateQuery(event)\
+app/components/ui-box.hbs\
+	<input... \{\{this.query\}\}  \{\{on "input" this.updateQuery\}\}    \{\{#each this.highlightedNames\
+app/styles/app.css\
+	body, input, mark\
+app/templates/application.hbs \
+	<UiBox @names=\{\{array    (hash id="1" text="Alice went to Berlin") (hash id="2" text="Bob and Eva")  (hash id="3" text="Clara likes Ember.js")  \}\}\
+tests/integration/components/ui-box-test.js\
+	'Integration | Component | ui-box',   'it renders and highlights names'\
+V01\
+app/styles/app.css\
+	body, label, input, ul, li, mark\
+V02\
+app/components/debug-toggle.js\
+	@tracked enabled    get statusText()    @action toggle(e)\
+app/templates/components/debug-toggle.hbs\
+	<select \{\{on "change" this.toggle\}\}>   \{this.statusText\}\}\
+M app/templates/application.hbs\
+	<DebugToggle />\
+docs/notes_v2.md \
+	Debug Toggle Dropdown   \
+V03\
+pnpm add -D tailwindcss@next postcss@latest autoprefixer@latest\
+npx tailwindcss init -p\
+	app/styles/app.css   @tailwind base;  .. components;  ... utilities;\
+M ember-cli-build.js\
+	const path = require("path"); ..fs = require("fs"); return app.toTree(); app.import("app/styles/app.css")   delete-line app.import.*app.css.*\
+	tailwind.config.js   content: [ './app/**/*.\{hbs,js,ts\}',  './tests/**/*.\{hbs,js,ts\}' ], theme: \{ extend: \{\}, \}, plugins: [],\
+postcss.config.js\
+	plugins: \{tailwindcss: \{\},autoprefixer: \{\},\},\
+M app/templates/application.hbs\
+M app/templates/components/ui-box.hbs\
+docs/notes_v3.md\
+	install tailwind v4\
+V04\
+pnpm add -D ember-cli-mirage\
+mirage/config.js\
+	this.namespace = '/api'   this.get('/names', () => return [  \{ id: '1', text: 'Alice in Wonderland' \}, ...]\
+app/initializers/ember-cli-mirage.js\
+	function initialize() ...  startMirage();\
+app/services/name-loader.js\
+	@tracked name   async load()   fetch('/api/names')...json   \
+M app/components/ui-box.js\
+	@service nameLoader   \
+tests/integration/components/ui-box-mirage-test.js\
+	Integration | Component | ui-box | Mirage   renders Mirage-loaded names\
+ docs/notes_v4.md\
+	mirage on api \
+V05\
+mv app/components/ui-box.js app/components/ui-box.ts\
+mv app/services/name-loader.js app/services/name-loader.ts\
+mv app/initializers/ember-cli-mirage.js app/initializers/ember-cli-mirage.ts\
+app/components/ui-box.ts\
+	more complex\
+app/services/name-loader.ts\
+app/initializers/ember-cli-mirage.ts\
+# 5. Add types to test (optional)\
+# For clarity and safety, types can be added to test helpers in a later step\
+docs/notes_v5.md \
+	migrated to `.ts`  Types added for component args, service data, and method signatures. `@service` injection uses `declare`.\
+V06\
+pnpm add -D @embroider/core @embroider/webpack @embroider/compat\
+	mkdir -p app/modules\
+	mkdir -p app/modules/core\
+	mkdir -p app/modules/features\
+	mkdir -p app/modules/features/ui-box\
+cp ...cp components/ui-box.ts modules/features/ui-box/component.ts  ..\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 ember-cli-build.js\
+	const EmberApp = require('ember-cli/lib/broccoli/ember-app'); Webpack .. compatBuild   app = new EmberApp(..;return compatBuild(app, Webpack, \{staticAppPaths: [],skipBabel: [\{package: 'qunit',\},],\});\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 app/modules/features/ui-box/index.ts\
+	export   ./component   template ./template.hbs\
+# 5. Update resolver (optional for advanced Polarion setups)\
+docs/notes_v6.md\
+	Embroider pipeline tree-shaking   domain-driven components   index.ts facilitates standalone testing and lazy loading\
+V07\
+pnpm add -D tailwindcss postcss autoprefixer\
+npx tailwindcss init -p\
+tailwind.config.js\
+	./app/**/*.hbs ...\
+app/styles/app.css\
+M ember-cli-build.js\
+M app/components/ui-box.hbs\
+pnpm add -D ember-cli-mirage   ???\
+mkdir -p mirage\
+mirage/config.js\
+app/initializers/ember-cli-mirage.js\
+mirage/scenarios/empty.js  ..?\
+mirage/scenarios/delayed.js !!! new !!!\
+docs/notes_v7.md \
+	TailwindCSS v4 + Mirage + Docs\
+V07b\
+mirage/scenarios/empty.js\
+	namespace = '/api';   get('/names', () => []);\
+mirage/scenarios/delayed.js\
+	mirage/scenarios/delayed.js \
+## v7b: Mirage Scenarios\
+- Empty data\
+- Delayed response\
+- Dynamically selected via `?scenario=xxx`\
+V08\
+pnpm install --save-dev typescript @glint/core @glint/environment-ember-loose\
+types/global.d.ts\
+	TemplateFactory from tmlbars-inline-precompile...\
+tsconfig.json\
+	typeRoots = ["types"]\
+mv app/components/ui-box.js app/components/ui-box.ts\
+app/components/ui-box.ts\
+	Name: id,text   Args: names query onSearch   @tracked query appliedQuery   get filteredNames()   @action updateQuery, applyQuery\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 ## v8: TypeScript Setup\
+- Added tsconfig.json\
+- Converted ui-box.js -> ui-box.ts\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 V09   V9a V9b V9c old, broken\
+pnpm install --save-dev ember-exam\
+OR\
+pnpm add -D ember-exam\
+grep package.json\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 ## v9: Visual Testing\
+- ember-exam installed\
+- Added basic acceptance test\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 V10   # Convert Namspot1 to Polarion-like structure\
+mkdir docs/polarion\
+mkdir -p tests/integration/components/ui-box\
+mv's ...\
+docs/polarion/index.json\
+docs/polarion/README.md\
+M docs/README.md\
+V11 \
+.github/workflows/ci.yml\
+V12\
+chokidar\
+V12a ...\
+pnpm add -D chokidar-cli\
+scripts/dev-watch.sh   run it    !!!  chmod +x scripts/dev-watch.sh   !!!\
+V12b\
+chokidar ...\
+V13   setup-dev-tools   sets up Prettier, ESLint autoformat\
+# Ensure script runs from root\
+cd "$(git rev-parse --show-toplevel)" || exit 1\
+pnpm add -D prettier eslint eslint-plugin-ember eslint-config-prettier\
+.prettierrc\
+ 	"singleQuote": true, ...\
+eslint.config.mjs\
+ 	eslintPluginEmber   files: ['**/*.js']   .. ecmaVersion: 2020 .. rules: \{...eslintPluginEmber.configs.recommended.rules\}  \
+V14 setup-ci\
+.github/workflows/ci.yml\
+	runs-on: ubuntu-latest cache: 'pnpm' $\{\{ matrix.node-version \}\}\
+V15   Setting up Husky + Lint-Staged pre-commit hook\
+pnpm add -D husky lint-staged\
+npx husky install\
+pnpm set-script prepare "husky install"\
+npx husky add .husky/pre-commit "npx lint-staged"\
+.lintstagedrc.json\
+pnpm add -D @percy/cli @percy/storybook\
+.percy/config.yml\
+pnpm set-script snapshot "percy snapshot"\
+pnpm add -D nyc\
+.nycrc.json\
+pnpm set-script coverage "nyc --reporter=lcov pnpm exec ember test"\
+docs/notes_v15.md \
+\
+\
+}
